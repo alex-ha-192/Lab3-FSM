@@ -1,8 +1,18 @@
 module f1_fsm (
+    input   logic [15:0] N,
     input   logic       rst,
-    input   logic       en,
     input   logic       clk,
     output  logic [7:0] data_out
+);
+
+logic en;
+
+clktick ticking_clk (
+    .en (1),
+    .rst (rst),
+    .clk (clk),
+    .N (N),
+    .tick (en)
 );
 
 // Define states
